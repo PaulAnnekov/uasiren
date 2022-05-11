@@ -8,7 +8,8 @@ setuptools.setup(
     use_scm_version=True,
     author="Pavlo Annekov",
     author_email="paul.annekov@gmail.com",
-    description="Implements siren.pp.ua API - public wrapper for api.ukrainealarm.com API that returns info about Ukraine air-raid alarms.",
+    description=("Implements siren.pp.ua API - public wrapper for api.ukrainealarm.com API that returns info about Ukraine "
+                 "air-raid alarms."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     license="MIT",
