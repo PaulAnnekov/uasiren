@@ -1,0 +1,10 @@
+{
+    "cSpell.words": [
+        "aiohttp",
+        "uasiren",
+        "ukrainealarm"
+    ],
+    "python.linting.enabled": true,
+    "python.linting.flake8Enabled": true,
+    "files.trimTrailingWhitespace": true
+}
