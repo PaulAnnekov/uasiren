@@ -5,11 +5,16 @@ class Client:
     """Class to make authenticated requests."""
 
     BASE_PATH = "https://siren.pp.ua/api/v3"
-    REQUEST_TIMEOUT = 10
+    REQUEST_TIMEOUT = 30
 
-    def __init__(self, session: ClientSession):
-        """Initialize the client."""
+    def __init__(self, session: ClientSession, timeout: float = None):
+        """Initialize the client.
+
+        :param timeout: total request timeout in seconds,
+            defaults to Client.REQUEST_TIMEOUT
+        """
         self.session = session
+        self.timeout = timeout if timeout is not None else Client.REQUEST_TIMEOUT
 
     async def __request(self, method: str, path: str) -> ClientResponse:
         """Make a request."""
@@ -22,7 +27,7 @@ class Client:
             method,
             f"{Client.BASE_PATH}/{path}",
             headers=headers,
-            timeout=Client.REQUEST_TIMEOUT
+            timeout=self.timeout
         )
         r.raise_for_status()
         return await r.json()
