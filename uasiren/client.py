@@ -1,3 +1,5 @@
+from typing import Any, Dict, List
+
 from aiohttp import ClientSession, ClientResponse
 
 
@@ -30,6 +32,10 @@ class Client:
     async def get_alerts(self, region_id: str = None) -> ClientResponse:
         """Get alerts."""
         return await self.__request("GET", "alerts" if region_id is None else f"alerts/{region_id}")
+
+    async def get_region_history(self, region_id: str) -> List[Dict[str, Any]]:
+        """Get region history."""
+        return await self.__request("GET", f"alerts/regionHistory?regionId={region_id}")
 
     async def get_last_alert_index(self) -> ClientResponse:
         """Get last alert index."""
