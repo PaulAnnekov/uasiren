@@ -37,6 +37,15 @@ class Client:
         """Get region history."""
         return await self.__request("GET", f"alerts/regionHistory?regionId={region_id}")
 
+    async def get_date_history(self, date: str) -> List[Dict[str, Any]]:
+        """Get alert history for a single date.
+
+        Args:
+            date: the date in YYYYMMDD format, e.g. "20261125". The API
+                returns HTTP 400 for any other format, including ISO 8601.
+        """
+        return await self.__request("GET", f"alerts/dateHistory?date={date}")
+
     async def get_last_alert_index(self) -> ClientResponse:
         """Get last alert index."""
         return await self.__request("GET", "alerts/status")
